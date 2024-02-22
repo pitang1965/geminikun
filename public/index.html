@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ジェミニ君</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>HTMXとGeminiを用いたシンプルチャット</h1>
+      <div id="chat-history"></div>
+      <form
+        hx-post="/api/generate"
+        hx-target="#chat-history"
+        hx-swap="afterend "
+      >
+        <textarea
+          id="text-input"
+          placeholder="WEFについて教えてください。"
+          type="text"
+          name="prompt"
+          required
+          rows="1"
+        ></textarea>
+        <button name="submit" type="submit" id="submit-button">送信</button>
+        <div class="htmx-indicator loader"></div>
+      </form>
+      <p class="copyright">
+        Powered by
+        <a
+          href="https://over40web.club"
+          target="_blank"
+          title="Over 40 Web Club"
+          >Over 40 Web Club</a
+        >
+      </p>
+    </div>
+  </body>
+  <script src="textarea.js"></script>
+</html>
