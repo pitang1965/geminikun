@@ -1,12 +1,3 @@
-// HTMXの非同期リクエストが完了したあとに、テキストエリアの内容をクリア
-document.addEventListener('htmx:afterRequest', function (event) {
-  console.log('Hi!');
-  var textInput = document.getElementById('text-input');
-  if (textInput) {
-    textInput.value = ''; // テキストエリアの内容をクリア
-  }
-});
-
 // テキストエリア #text-input でEnterキーを入力したら自動で高さを増やす
 // CSSの新プロパティ(form-sizing?field-sizing)が使えるまでの対応
 

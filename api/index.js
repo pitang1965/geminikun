@@ -1,7 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
-const { history, generateResponse } = require('./chatService.js');
+const { generateResponse } = require('./chatService.js');
 
 dotenv.config();
 
