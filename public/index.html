@@ -5,16 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ジェミニ君</title>
     <link rel="stylesheet" href="/style.css" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
   </head>
   <body>
     <div class="container">
       <h1>HTMXとGeminiを用いたシンプルチャット</h1>
-      <div id="chat-history"></div>
+      <div id="chat-messages"></div>
       <form
         hx-post="/api/generate"
-        hx-target="#chat-history"
-        hx-swap="afterend "
+        hx-target="#chat-messages"
+        hx-swap="beforeend "
       >
         <textarea
           id="text-input"

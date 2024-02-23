@@ -18,7 +18,17 @@ app.post('/api/generate', async (req, res) => {
   const { prompt } = req.body;
   try {
     const ret = await generateResponse(prompt);
-    res.send(ret);
+    res.send(`
+      <div class="chat-message-container user-message">
+        <div class="chat-message">
+          ${prompt}
+        </div>
+      </div>
+      <div class="chat-message-container ai-message">
+        <div class="chat-message">
+          ${ret}
+        </div>
+      </div>`);
   } catch (error) {
     console.error('Error :', error);
     res.send(`<p id="api-error">エラー: ${error}</p>`);

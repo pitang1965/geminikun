@@ -17,17 +17,51 @@ body {
   font-weight: 100;
   font-size: 12px;
   line-height: 30px;
-  color: #E2E2E2;
-  background: #333333;
+  color: #050505;
+  background: #FFFFFF;
 }
 
 .container {
   position: relative; /* ローダーの基準点となる */
-  background-color: #212121;
+  background-color: #FFFFFF;
   max-width: 800px;
   width: 100%;
   padding: 1rem;
   margin: 0 auto;
+  overflow-y: auto;
+}
+
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem;
+  overflow-y: auto;
+}
+
+.chat-message-container {
+  display: flex;
+}
+
+.chat-message {
+  margin: 10px;
+  padding: 8px;
+  border-radius: 10px;
+  width: fit-content;
+  max-width: 90%;
+}
+
+.ai-message .chat-message {
+  justify-content: flex-start;
+  text-align: left;
+  color: #050505;
+  background-color: #F0F0F0;
+}
+
+.user-message .chat-message {
+  margin-left: auto;
+  text-align: right;
+  color: #FFFFFF;
+  background-color: #0A7CFF;
 }
 
 form {
@@ -35,6 +69,7 @@ form {
   align-items: center; /* 垂直方向の中央揃え */
   justify-content: space-between; /* 水平方向のスペース分配 */
   gap: 10px; /* 要素間の隙間 */
+  margin-top: 1rem;
 }
 
 textarea, button {
@@ -95,5 +130,6 @@ textarea {
 }
 
 .copyright {
+  margin-top: 1rem;
   text-align: center;
 }
