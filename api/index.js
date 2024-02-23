@@ -15,16 +15,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
 
 app.post('/api/generate', async (req, res) => {
-  const { prompt } = req.body;
+  const { message } = req.body;
   try {
-    const ret = await generateResponse(prompt);
+    const ret = await generateResponse(message);
     res.send(`
       <div class="chat-message-container user-message">
         <div class="chat-message">
-          ${prompt}
+          ${message}
         </div>
       </div>
-      <div class="chat-message-container ai-message">
+      <div class="chat-message-container model-message">
         <div class="chat-message">
           ${ret}
         </div>

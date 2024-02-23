@@ -2,39 +2,35 @@ const { GoogleGenerativeAI } = require('@google/generative-ai');
 const dotenv = require('dotenv');
 dotenv.config();
 
-// GoogleGenerativeAI required config
-const configuration = new GoogleGenerativeAI(process.env.API_KEY);
-
-// Model initialization
-const modelId = 'gemini-pro';
-const generationConfig = {
-  stopSequences: ['red'],
-  maxOutputTokens: 500,
-  temperature: 0.9,
-  topP: 0.1,
-  topK: 16,
-};
-
-const model = configuration.getGenerativeModel({
-  model: modelId,
-  generationConfig,
+const genAI = new GoogleGenerativeAI(process.env.API_KEY);
+const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
+const chat = model.startChat({
+  history: [
+    {
+      role: 'user',
+      parts:
+        '単に名詞や数値を回答する場合は、「だよ~。」を語尾につけてください。',
+    },
+    {
+      role: 'model',
+      parts: '承知しました。',
+    },
+  ],
+  generationConfig: {
+    maxOutputTokens: 100,
+  },
 });
 
-const history = [];
-
-const generateResponse = async (prompt) => {
+const generateResponse = async (message) => {
   try {
-    const result = await model.generateContent(prompt);
-    const response = await result.response.text();
+    const result = await chat.sendMessage(message);
+    const text = await result.response.text();
 
-    return(response);
+    return text;
   } catch (err) {
     console.error(err);
-    return (json({ message: 'サーバー内部のエラーです。' }));
+    return 'すみません。サーバー内部のエラーです。';
   }
 };
 
-module.exports = {
-  generateResponse,
-  history,
-};
+module.exports = { generateResponse };

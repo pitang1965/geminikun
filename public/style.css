@@ -50,7 +50,7 @@ body {
   max-width: 90%;
 }
 
-.ai-message .chat-message {
+.model-message .chat-message {
   justify-content: flex-start;
   text-align: left;
   color: #050505;
