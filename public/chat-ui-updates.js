@@ -1,9 +1,14 @@
-// HTMXの非同期リクエストが完了したあとに、テキストエリアの内容をクリア
+// HTMXの非同期リクエストが完了したあとに、テキストエリアの内容をクリアし、スクロール位置を調整
+
 document.addEventListener('htmx:afterRequest', function (event) {
-  console.log('Hi!');
-  var textInput = document.getElementById('text-input');
-  if (textInput) {
-    textInput.value = ''; // テキストエリアの内容をクリア
+  var messageInput = document.getElementById('message-input');
+  if (messageInput) {
+    messageInput.value = ''; // テキストエリアの内容をクリア
   }
+  // scrollToBottom();　機能しない
 });
 
+function scrollToBottom() {
+  const container = document.getElementById('container');
+  container.scrollTop = container.scrollHeight;
+}
