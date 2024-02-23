@@ -9,27 +9,32 @@ const chat = model.startChat({
     {
       role: 'user',
       parts:
-        '単に名詞や数値を回答する場合は、「だよ~。」を語尾につけてください。',
+        '単に名詞や数値を回答する場合は、「だよ~。」を語尾につけてください。ただし、複数を列挙するときには、その一つ一つには付けないでください。',
     },
     {
       role: 'model',
-      parts: '承知しました。',
+      parts:
+        'はい、単に名詞や数値を回答する場合は、「だよ~。」を語尾につけて回答いたします。',
     },
   ],
   generationConfig: {
-    maxOutputTokens: 100,
+    maxOutputTokens: 1000,
   },
 });
 
 const generateResponse = async (message) => {
   try {
+    if (!message.trim()) {
+      return 'メッセージが空だよ～。';
+    }
+
     const result = await chat.sendMessage(message);
     const text = await result.response.text();
 
     return text;
   } catch (err) {
     console.error(err);
-    return 'すみません。サーバー内部のエラーです。';
+    return 'すみません。サーバー内部のエラーが発生しちゃった。';
   }
 };
 
