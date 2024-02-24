@@ -72,12 +72,12 @@ form {
 }
 
 textarea, button {
-  flex-grow: 1; /* 要素がコンテナ内の利用可能なスペースを均等に埋めるように設定 */
   font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
   padding: 0.2rem;
 }
 
 textarea {
+  flex-grow: 1; /* テキストエリアが残りのスペースを埋めるように設定 */
   width: 90%;
   padding: 0.3rem;
   overflow: hidden; /* スクロールバーを隠す */
@@ -86,6 +86,7 @@ textarea {
 
 #submit-button {
   flex-grow: 0; /* ボタンのサイズを内容に基づいて調整 */
+  white-space: nowrap; /* ボタンのテキストが折り返さないように設定 */
 }
 
 ::placeholder {
