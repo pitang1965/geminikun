@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const { generateResponse } = require('./chatService.js');
+const { marked } = require('marked');
 
 dotenv.config();
 
@@ -18,6 +19,11 @@ app.post('/api/generate', async (req, res) => {
   const { message } = req.body;
   try {
     const ret = await generateResponse(message);
+    // console.log('ret: ', ret)
+
+    // マークダウンをHTMLに変換
+    const html = marked.parse(ret);
+
     res.send(`
       <div class="chat-message-container user-message">
         <div class="chat-message">
@@ -26,7 +32,7 @@ app.post('/api/generate', async (req, res) => {
       </div>
       <div class="chat-message-container model-message">
         <div class="chat-message">
-          ${ret}
+          ${html}
         </div>
       </div>`);
   } catch (error) {

@@ -47,6 +47,17 @@ body {
   border-radius: 10px;
   width: fit-content;
   max-width: 90%;
+  overflow: hidden; /* コンテンツがはみ出さないようにする */
+}
+
+.chat-message ul {
+  list-style-type: disc; /* デフォルトのリストスタイル */
+  padding-left: 20px; /* リストのインデントを調整 */
+  margin: 0; /* デフォルトのマージンを取り除く */
+}
+
+.chat-message li {
+  margin-bottom: 5px; /* リストアイテム間のスペースを調整 */
 }
 
 .model-message .chat-message {
