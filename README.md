@@ -3,7 +3,7 @@
 
 * Googleの生成AIである[GeminiのAPI](https://ai.google.dev/tutorials?hl=ja)を[HTMX](https://htmx.org/)を使って作成したシンプルなチャットアプリです。
 
-  ![image](https://github.com/pitang1965/geminikun/assets/47315420/e4607117-0088-4641-9a72-2f68bc93f49f)
+  ![image](https://github.com/pitang1965/geminikun/assets/47315420/847499c9-3c7e-4f6e-9280-7d9b842f2910)
 
 * フロントエンドは、HTML, CSS, 少量のJavaScriptとHTMXを使用。
 * バックエンドは、Node.jsのフレームワークの [express.js](https://expressjs.com/ja/)を使用。
